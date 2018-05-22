@@ -3,7 +3,7 @@ Easily add and remove items from your tf2-automatic bot<br />
 This proejct is still in development (stuff may be broke) 
 
 How to get started:<br />
-1.first clone the repository<br />
+1.first download the repository<br />
 2.unzip the repository and put it somewhere you can easily access<br />
 2.install nodejs (the recommended version) from [here](https://nodejs.org/en/)<br />
 3.go into the repository folder and double click the insatll.bat file, this will install all the needed modules for you<br />
