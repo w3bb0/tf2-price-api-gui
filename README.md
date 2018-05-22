@@ -9,7 +9,7 @@ How to get started:<br />
 3.go into the repository folder and double click the insatll.bat file, this will install all the needed modules for you<br />
 4.edit the config.js with your prefered text editor like notepad++ which can be found [here](https://notepad-plus-plus.org/)<br />
 5.enter the required details and save<br />
-6.whenever you want to add or remove listings from your bot double click the lauch.bat file<br />
+6.whenever you want to add or remove listings from your bot double click the site.bat file<br />
 
 Caviats:<br />
 .the script suffers from rate limiting issues<br />  
