@@ -1,5 +1,6 @@
 # tf2-price-api-gui<br />
 Easily add and remove items from your tf2-automatic bot<br />
+This proejct is still in development (stuff may be broke) 
 
 How to get started:<br />
 1.first clone the repository<br />
