@@ -1,6 +1,8 @@
 {
   "name": "tf2-price-api-gui",
-  "version": "1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
@@ -10,5 +12,11 @@
     "request": "^2.87.0",
     "tf2-items": "^2.0.2",
     "url": "^0.11.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
