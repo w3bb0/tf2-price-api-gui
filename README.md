@@ -15,6 +15,6 @@ Caviats:<br />
 .when adding items to the bot it sets the stock limit to the defualt you have set in tf2 automatic<br /> 
 
 enjoy and if you wish to donate you can the find the links below:<br /> 
-[pay-pal](paypal.me/w3bb0)<br />
+[pay-pal](https://www.paypal.me/w3bb0)<br />
 [items](https://steamcommunity.com/tradeoffer/new/?partner=42975919&token=Gg_ChxfV)<br />
 
