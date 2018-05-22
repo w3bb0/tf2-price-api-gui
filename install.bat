@@ -1,0 +1,5 @@
+@ECHO OFF
+npm i 
+IF %ERRORLEVEL% == 0 GOTO QUIT
+pause
+:QUIT

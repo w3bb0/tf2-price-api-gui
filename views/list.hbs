@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>remove items</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<h1>see and remove items</h1>
+<h2>{{{result}}}</h2>
+<ul>
+<li><a href="/">home</a></li>	
+<li><a href="/addItem">add a item to the bot</a></li>
+<li><a class="active" href="/pricelist">remove items from the bot</a></li>
+</ul>
+<br><br><br>
+<form method="post" id="removeItem">
+{{#items}}
+	<input type="checkbox" name="name" value={{{position}}}><br> {{{name}}} <br> {{{buy}}} <br> {{{sell}}} <hr><br>
+{{/items}}
+<input type="submit" form="removeItem" value="remove the slected items">
+</html>

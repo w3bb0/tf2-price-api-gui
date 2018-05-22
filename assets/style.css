@@ -1,0 +1,101 @@
+body {
+    background-color: #293a46;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-family: 'Roboto', sans-serif;
+    color: #efefef;
+}
+
+h1 {
+  text-align: left;
+}
+
+a {
+  color: #efefef;
+}
+
+a:hover {
+    color: #02043a;
+}
+
+input[type=text] {
+  border: none;
+  width: 750px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: #293a46;
+  color: #efefef;
+  padding: 12px 20px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+input[type=password] {
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: #293a46;
+  color: #efefef;
+  padding: 12px 20px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+input[type=submit] {
+  background-color: #293a46;
+  color: #efefef;
+  border: none;
+  cursor: pointer;
+  width: 20em;  height: 2em;
+  text-align: left;
+  font-size: 150%;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+input[name=logOut] {
+  background-color: #293a46;
+  color: #efefef;
+  border: none;
+  cursor: pointer;
+  width: 20em;  height: 2em;
+  text-align: left;
+  font-size: 150%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #293a46;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
+}
+
+li a {
+    text-align:center;
+    display: block;
+    color: #efefef;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #37556b;
+    color: white;
+    border-bottom: 1px solid black;
+}
+
+.active {
+    background-color: #355166;
+} 

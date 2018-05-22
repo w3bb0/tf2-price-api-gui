@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>add tag</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<h1>{{{result}}}</h1>
+<ul>
+<li><a href="/">home</a></li>	
+<li><a class="active" href="/addItem">add a item to the bot</a></li>
+<li><a href="/pricelist">remove items from the bot</a></li>
+</ul>
+<br><br><br>
+<form method="POST" id="addItem">
+    paste backpack.tf url:<br>
+    <input type="text" name="url" placeholder="url" required autofocus>
+    <br><br>
+    <input type="submit" value="add item">
+</form>
+</body>
+</html>
