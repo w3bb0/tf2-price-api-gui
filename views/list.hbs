@@ -13,6 +13,9 @@
     <h1>View and remove items from the pricelist</h1>
     <h2>{{{result}}}</h2>
     <ul>
+    	<li>
+    		<li><a href="/">home</a></li>
+    	</li>
         <li>
             <a href="/addItem">Add an item to the bot</a>
         </li>
@@ -32,16 +35,10 @@
         <hr>
         <br>
         {{/items}}
-        <p>Remove all: <input type="checkbox" id="selectAll" form="removeItem" value="Select all"></input></p>
         <input type="submit" form="removeItem" value="Remove the selected items"></input>
     </form>
-
-    <script>
-        $(document).ready(function () {
-             $("input#selectAll").click(function () {
-                console.log(this.checked);
-                $('input[id=item]').not(this).prop('checked', this.checked);
-            });
-        });
-    </script>
+    <form method="post" id="removeAll">
+    	<input type="hidden" name="delete" value="all"></input>
+    	<input type="submit" form="removeAll" value="Delete all items"></input>
+    </form>
 </html>
