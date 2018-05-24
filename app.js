@@ -109,7 +109,6 @@ function currencyAsText(currencies) {
 };
 //my function to get prices and make them pretty
 function getPrices() {
-	console.log("getting price-list")
     return new Promise((resolve, reject) => {
         let options = {
             method: 'GET',
@@ -123,18 +122,28 @@ function getPrices() {
             if (error) {
                 reject(err);
             }
-            if (body.response.success != true) {
-                reject("wait some time to accses the price-list")
-                return
+
+            const result = body.response;
+
+            if (response.statusCode == 429) {
+                reject(new Error('Wait ' + result.wait + ' ' + plural('second', result.wait)));
+                return;
+            } else if (600 > response.statusCode  && response.statusCode > 499) {
+                reject(new Error('Server error'));
+                return;
+            } else if (response.statusCode != 200) {
+                reject(new Error(result.message));
+                return;
             }
+
             let items = []
             for (var i = 0; i < body.response.items.length; i++) {
                 let buy = currencyAsText(body.response.items[i].price.buy)
                 let sell = currencyAsText(body.response.items[i].price.sell)
                 items.push({
                     "name": body.response.items[i].item.name,
-                    "buy": 'buying at ' + buy,
-                    "sell": 'selling at ' + sell,
+                    "buy": 'Buying for ' + buy,
+                    "sell": 'Selling for ' + sell,
                     "position": [i]
                 })
             }
@@ -142,6 +151,7 @@ function getPrices() {
         });
     });
 }
+
 //my function to get a list of items in the pricelist
 function getList() {
 	console.log("getting list of items")
@@ -276,7 +286,12 @@ app.post('/addItem', function(req, res) {
 //more messy logic
 app.post('/pricelist', (req, res) => {
     getList().then(list => {
-        let items = req.body.name
+        let items = req.body.name || [];
+        if (items.length == 0) {
+            res.json('You need to select items');
+            return;
+        }
+
         let names = []
         for (var i = 0; i < items.length; i++) {
             names.push(list[items[i]])
@@ -304,6 +319,7 @@ app.post('/pricelist', (req, res) => {
         });
     }).catch((err) => {
         res.json('the script died send this to nick: ' + err)
+        console.log(err);
     });
 });
 app.get('/add', (req, res) => {});

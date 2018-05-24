@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>remove items</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
+
 <body>
-<h1>see and remove items</h1>
-<h2>{{{result}}}</h2>
-<ul>
-<li><a href="/">home</a></li>	
-<li><a href="/addItem">add a item to the bot</a></li>
-<li><a class="active" href="/pricelist">remove items from the bot</a></li>
-</ul>
-<br><br><br>
-<form method="post" id="removeItem">
-{{#items}}
-	<input type="checkbox" name="name" value={{{position}}}><br> {{{name}}} <br> {{{buy}}} <br> {{{sell}}} <hr><br>
-{{/items}}
-<input type="submit" form="removeItem" value="remove the slected items">
+    <h1>View and remove items from the pricelist</h1>
+    <h2>{{{result}}}</h2>
+    <ul>
+        <li>
+            <a href="/addItem">Add an item to the bot</a>
+        </li>
+        <li>
+            <a class="active" href="/pricelist">View and remove items from the pricelist</a>
+        </li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <form method="post" id="removeItem">
+        {{#items}}
+        <input type="checkbox" id="item" name="name" value={{{position}}}></input>
+        <br> {{{name}}}
+        <br> {{{buy}}}
+        <br> {{{sell}}}
+        <hr>
+        <br>
+        {{/items}}
+        <p>Remove all: <input type="checkbox" id="selectAll" form="removeItem" value="Select all"></input></p>
+        <input type="submit" form="removeItem" value="Remove the selected items"></input>
+    </form>
+
+    <script>
+        $(document).ready(function () {
+             $("input#selectAll").click(function () {
+                console.log(this.checked);
+                $('input[id=item]').not(this).prop('checked', this.checked);
+            });
+        });
+    </script>
 </html>
