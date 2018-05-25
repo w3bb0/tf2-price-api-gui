@@ -2,15 +2,78 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>home</title>
+    <title>tf2-automatic</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-<ul>
-<li><a class="active" href="/">home</a></li>	
-<li><a href="/addItem">add a item to the bot</a></li>
-<li><a href="/pricelist">View and remove items from the pricelist</a></li>
-</ul>
+
+
+
+<nav class="navbar">
+     <span class="open-slide">
+        <a href="#" onclick="openSlideMenu()">
+            <svg width="30" height="30">
+                <path d="M0,5 30,5" stroke="#fff" 
+                stroke-width="5"/>
+                <path d="M0,14 30,14" stroke="#fff"
+                stroke-width="5"/>
+                <path d="M0,23 30,23" stroke="#fff"
+                stroke-width="5"/>
+            </svg>    
+        </a>
+    </span>
+    <ul class="navbar-nav">
+    </ul>
+</nav>
+
+
+<div id="side-menu" class="side-nav">
+            <a href="#"class = "btn-close" onclick=closeSideMenu()>&times;</a>
+            <a href="/">Home</a>
+            <a href="/pricelist">Item List</a>
+            <a href="additem">Add item</a>
+        </div>
+        <div class="main">
+            <h1></h1>
+    </div>
+
+    <script>
+            function openSlideMenu() {
+                document.getElementById('side-menu').style.width = '250px';
+                document.getElementById('main').style.margin.left = '250px';
+
+            }
+            function closeSideMenu() {
+                document.getElementById('side-menu').style.width = '0px';
+                document.getElementById('main').style.margin.left = '0px';
+            }
+     </script>
+<nav> 
+
+<div class="github">
+  <img src="https://i.imgur.com/evVmKjY.png" alt="" style="width:40%">
+  <div class="container">
+    <p>Share, develop, add and more on our github page.</p>
+    <a class="a2" href="https://github.com/w3bb01/tf2-price-api-gui">Download here!</a>
+  </div>
+</div>
+</nav>
+
+<nav>
+<div class="discord">
+    <img src="https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg" alt="" style="width:20%">
+    <div class="container">
+    <p>Join our Discord to talk with fellow bot-owners, talk about potential issues and more!</p>
+    <a class="a2" href="https://discordapp.com/invite/5VYFY7V">Join here!</a>
+    </div>
+    </div>
+</nav>
+
+<p class="copyright-notice">
+Copyright © tf2-automatic 
+</p>
+
+
 </body>
 </html>

@@ -1,14 +1,22 @@
 body {
     background-color: #293a46;
-    margin-left: 20%;
-    margin-right: 20%;
+    background-size: 100% 150%;
+    background: linear-gradient(-90deg, #10578a,#10578a)
+    margin-left: 3%;
+    margin-right: 0%;
     font-family: 'Roboto', sans-serif;
     color: #efefef;
+    text-align: center;
 }
 
-h1 {
-  text-align: left;
+
+th, td {
+    border-bottom: 1px solid #ddd;
 }
+
+.active {
+    background-color: #688397;
+} 
 
 a {
   color: #efefef;
@@ -19,11 +27,12 @@ a:hover {
 }
 
 input[type=text] {
+
   border: none;
   width: 750px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  background-color: #293a46;
-  color: #efefef;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  background-color: white;
+  color: black;
   padding: 12px 20px;
   margin: 4px 0;
   box-sizing: border-box;
@@ -41,18 +50,25 @@ input[type=password] {
   font-family: 'Roboto', sans-serif;
 }
 
+
 input[type=submit] {
-  background-color: #293a46;
-  color: #efefef;
+  width: 200px;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(68, 68, 68);
+  box-shadow: 10px 5px 5px black;
+  border-radius: 10px 0px 0px 10px;
+  display: inline-block;
   border: none;
   cursor: pointer;
-  width: 20em;  height: 2em;
-  text-align: left;
-  font-size: 150%;
+  position: fixed;
+  font-size: 17px;
+  text-decoration: none;
+  left: 90%;
 }
 
-th, td {
-    border-bottom: 1px solid #ddd;
+input[type=submit]:hover {
+  color: #818181;
 }
 
 input[name=logOut] {
@@ -68,34 +84,137 @@ input[name=logOut] {
   right: 0px;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #293a46;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border: 1px solid black;
+
+.navbar{
+    background-color: #10578a;
+    overflow:hidden;
+    height:60px;
+    box-shadow: 10px 5px 5px #000;
 }
 
-li a {
-    text-align:center;
-    display: block;
-    color: #efefef;
-    padding: 8px 16px;
+.navbar a{
+    float:left;
+    display:block;
+    color:#f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    border-bottom: 1px solid black;
+    font-size: 17px;
 }
 
-/* Change the link color on hover */
-li a:hover {
-    background-color: #37556b;
-    color: white;
-    border-bottom: 1px solid black;
+.navbar ul{
+    padding: 8px 0 0 0;
+    list-style: none;
 }
 
-.active {
-    background-color: #355166;
-} 
+.navbar a:hover{
+    background-color: #1277be;
+    color:#000
+}
+
+.side-nav{
+    height:100%;
+    width:250px;
+    position:fixed;
+    z-index:1;
+    top: 0px;
+    left:0px;
+    background-color:#10578a;
+    opacity: 100%;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    box-shadow: 3px 5px 5px #000;
+    white-space: nowrap;
+}
+
+.side-nav a{
+    padding:10px 10px 10px 30px;
+    text-decoration: none;
+    font-size:22px;
+    color:#ccc;
+    display:block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover{
+    color:#818181;
+}
+
+.side-nav .btn-close{
+    position:absolute;
+    top:0;
+    right:22px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main{
+    transition:margin-left 0.5s;
+    padding:20px;
+    overflow:hidden;
+    width:100%;
+}
+
+
+div.github {
+    width: 750px;
+    height: 250px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    display: inline-block;
+  }
+
+  
+  div.container {
+    text-align: center;
+    padding: 10px 20px;
+    color:#000
+  }
+
+
+
+  .a2 {
+      color:#000;
+      text-decoration: none;
+      font-size: 20px;
+  }
+
+  .bptext {
+      color: black;
+  }
+
+
+
+  div.discord {
+    width: 750px;
+    height: 250px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    display: inline-block;
+  }
+  
+  div.additems {
+    width: 750px;
+    height: 250px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    display: inline-block;
+  }
+
+  .copyright-notice {
+      font-size: 10px;
+  }
+
+  .item-desc {
+    color:black;
+    position: relative;
+    width: 300px;
+    left: 800px;
+    background-color: white;
+    border: 1px;
+    box-shadow: 10px 10px 20px black;
+  }

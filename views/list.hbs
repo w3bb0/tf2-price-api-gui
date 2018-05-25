@@ -3,42 +3,74 @@
 
 <head lang="en">
     <meta charset="UTF-8">
-    <title>remove items</title>
+    <title>Item list</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
+<nav class="navbar">
+     <span class="open-slide">
+         <a href="#" onclick="openSlideMenu()">
+            <svg width="30" height="30">
+                <path d="M0,5 30,5" stroke="#fff" 
+                stroke-width="5"/>
+                <path d="M0,14 30,14" stroke="#fff"
+                stroke-width="5"/>
+                <path d="M0,23 30,23" stroke="#fff"
+                stroke-width="5"/>
+            </svg>    
+         </a>
+     </span>
+
+</nav>
+
+<div id="side-menu" class="side-nav">
+            <a href="#"class = "btn-close" onclick=closeSideMenu()>&times;</a>
+            <a href="/">Home</a>
+            <a href="/pricelist">Item List</a>
+            <a href="additem">Add items</a>
+         <input type="submit" form="removeItem" value="Delete selected"></input><br>
+        <br>
+    	<input type="submit" form="removeAll" value="Delete all items"></input>
+    </div>
+
+        </div>
+        <div class="main">
+            <h1>TF2 Price API GUI</h1>
+        </div>
+
+        <script>
+            function openSlideMenu() {
+                document.getElementById('side-menu').style.width = '250px';
+                document.getElementById('main').style.margin.left = '250px';
+
+            }
+            function closeSideMenu() {
+                document.getElementById('side-menu').style.width = '0px';
+                document.getElementById('main').style.margin.left = '0px';
+            }
+        </script>
+
+
     <h1>View and remove items from the pricelist</h1>
     <h2>{{{result}}}</h2>
-    <ul>
-    	<li>
-    		<li><a href="/">home</a></li>
-    	</li>
-        <li>
-            <a href="/addItem">Add an item to the bot</a>
-        </li>
-        <li>
-            <a class="active" href="/pricelist">View and remove items from the pricelist</a>
-        </li>
-    </ul>
     <br>
     <br>
     <br>
+<div class="item-desc">
     <form method="post" id="removeItem">
         {{#items}}
-        <input type="checkbox" id="item" name="name" value={{{position}}}></input>
         <br> {{{name}}}
+        <input type="checkbox" id="item" name="name" value={{{position}}}></input>
         <br> {{{buy}}}
         <br> {{{sell}}}
         <hr>
-        <br>
         {{/items}}
-        <input type="submit" form="removeItem" value="Remove the selected items"></input>
     </form>
     <form method="post" id="removeAll">
     	<input type="hidden" name="delete" value="all"></input>
-    	<input type="submit" form="removeAll" value="Delete all items"></input>
     </form>
+</div>
+</body>
 </html>
