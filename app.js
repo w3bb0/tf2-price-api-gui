@@ -213,7 +213,7 @@ function addItem(item) {
         request(options, function(error, response, body) {
             if (error) throw new Error(error);
             if (body.response.success != true) {
-                reject("had issues adding item to bot" + body.response)
+                reject("had issues adding item to bot" + body.response.message)
                 return
             }
             resolve(body.response.success)
