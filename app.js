@@ -5,7 +5,7 @@ const path = require('path');
 const URL = require('url');
 const request = require('request')
 const TF2Items = require('tf2-items');
-const config = require('./config.js');
+const config = require('./config.json');
 const Automatic = require('tf2automatic');
 
 const options = {
