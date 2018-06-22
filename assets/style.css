@@ -195,6 +195,15 @@ div.github {
     margin-bottom: 25px;
     display: inline-block;
   }
+
+  div.donate {
+    width: 750px;
+    height: 150px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    display: inline-block;
+  }
   
   div.additems {
     width: 750px;
