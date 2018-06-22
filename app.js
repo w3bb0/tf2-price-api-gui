@@ -3,33 +3,38 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const URL = require('url');
-const request = require('request')
-const TF2Items = require('tf2-items');
-const config = require('./config.json');
-const Automatic = require('tf2automatic');
+const async = require('async');
 
-const options = {
+const TF2Items = require('tf2-items');
+const TF2Automatic = require('tf2automatic');
+
+const config = require('./config.json');
+
+const Automatic = new TF2Automatic({
     client_id: config.client_id,
     client_secret: config.client_secret
-};
-
-const automatic = new Automatic(options);
-
-automatic.init(function (err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
 });
 
-const Items = new TF2Items({ //set up the items module
+const Items = new TF2Items({
     apiKey: config.steamKey
 });
 
-Items.init(function (err) {
-    if (err) {
-        console.log(err)
+async.series([
+    function (callback) {
+        Automatic.init(callback);
+    },
+    function (callback) {
+        Items.init(callback);
     }
+], function(err) {
+    if (err) {
+        throw err;
+    }
+
+    app.listen(3000, function () { //listen on port 3000
+        console.log("Server is listening on port 3000");
+        require("openurl").open("http://localhost:3000/")
+    });
 });
 
 const app = express(); //set up handlebars and express
@@ -115,7 +120,7 @@ function currencyAsText(currencies) {
 };
 
 function getList() {
-    let list = automatic.listings
+    let list = Automatic.listings
     let items = []
     for (let i = 0; i < list.length; i++) {
         let buy = null;
@@ -139,7 +144,7 @@ function getList() {
 
 function getItems() {
     let names = [];
-    const listings = automatic.listings;
+    const listings = Automatic.listings;
     for (let i = 0; i < listings.length; i++) {
         const name = listings[i].name;
         names.push(name);
@@ -169,7 +174,7 @@ app.get('/addItem', (req, res) => {
 
 app.post('/pricelist', (req, res) => {
     if (req.body.delete) {
-        automatic.removeListings(getItems(), function (err) {
+        Automatic.removeListings(getItems(), function (err) {
             if (!err) {
                 res.render('list', {
                     items: getList(),
@@ -192,7 +197,7 @@ app.post('/pricelist', (req, res) => {
         for (var i = 0; i < items.length; i++) {
             names.push(list[items[i]])
         }
-        automatic.removeListings(names, function (err) {
+        Automatic.removeListings(names, function (err) {
             if (!err) {
                 res.render('list', {
                     items: getList(),
@@ -214,7 +219,7 @@ app.post('/additem', (req, res) => {
         return
     }
     let querys = url.query //assign the query's from the passed URL to a variable
-    automatic.addListing({
+    Automatic.addListing({
         defindex: findMatch(querys.item),
         quality: parseInt(querys.quality),
         craftable: parseInt(querys.craftable) == 1 ? true : false,
@@ -226,7 +231,7 @@ app.post('/additem', (req, res) => {
     }, function (err, listing) {
         if (err) {
             res.render('addItem', {
-                result: "well something broke go send this error to w3bb0: " + err
+                result: "well something broke go send this error to w3bb0: " + err.messages ? err.messages.join(', ').toLowerCase() : err.message
             });
             return;
         }
@@ -234,9 +239,4 @@ app.post('/additem', (req, res) => {
             result: "item added, add a item below"
         });
     })
-});
-
-app.listen(3000, function () { //listen on port 3000
-    console.log("Server is listening on port 3000");
-    require("openurl").open("http://localhost:3000/")
 });
