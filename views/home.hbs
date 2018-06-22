@@ -1,90 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>tf2-automatic</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
+
 <body>
 
 
 
-<nav class="navbar">
-     <span class="open-slide">
-        <a href="#" onclick="openSlideMenu()">
-            <svg width="30" height="30">
-                <path d="M0,5 30,5" stroke="#fff" 
-                stroke-width="5"/>
-                <path d="M0,14 30,14" stroke="#fff"
-                stroke-width="5"/>
-                <path d="M0,23 30,23" stroke="#fff"
-                stroke-width="5"/>
-            </svg>    
-        </a>
-    </span>
-    <ul class="navbar-nav">
-    </ul>
-</nav>
+    <nav class="navbar">
+        <span class="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+                <svg width="30" height="30">
+                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                </svg>
+            </a>
+        </span>
+        <ul class="navbar-nav">
+        </ul>
+    </nav>
 
 
-<div id="side-menu" class="side-nav">
-            <a href="#"class = "btn-close" onclick=closeSideMenu()>&times;</a>
-            <a href="/">Home</a>
-            <a href="/pricelist">Item List</a>
-            <a href="additem">Add item</a>
-        </div>
-        <div class="main">
-            <h1></h1>
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick=closeSideMenu()>&times;</a>
+        <a href="/">Home</a>
+        <a href="/pricelist">Item List</a>
+        <a href="additem">Add item</a>
+    </div>
+    <div class="main">
+        <h1></h1>
     </div>
 
     <script>
-            function openSlideMenu() {
-                document.getElementById('side-menu').style.width = '250px';
-                document.getElementById('main').style.margin.left = '250px';
+        function openSlideMenu() {
+            document.getElementById('side-menu').style.width = '250px';
+            document.getElementById('main').style.margin.left = '250px';
 
-            }
-            function closeSideMenu() {
-                document.getElementById('side-menu').style.width = '0px';
-                document.getElementById('main').style.margin.left = '0px';
-            }
-     </script>
-<nav>
+        }
+        function closeSideMenu() {
+            document.getElementById('side-menu').style.width = '0px';
+            document.getElementById('main').style.margin.left = '0px';
+        }
+    </script>
+    <nav>
 
-<nav>
-<div class="donate">
-    <div class="container">
-    <p>Please consider donating if u find this useful it will allow for the continued development of this thing</p>
-    <a class="a2" href="https://www.paypal.me/w3bb0">Pay Pal!</a><br>
-    <a class="a2" href="https://steamcommunity.com/tradeoffer/new/?partner=42975919&token=Gg_ChxfV">Items!</a><br>
-    <a class="a2" href="https://steamcommunity.com/id/Laleem/">Person who made this thing pretty!</a>
-    </div>
-    </div>
-</nav>     
+        <nav>
+            <div class="donate">
+                <div class="container">
+                    <p>Please consider donating if u find this useful it will allow for the continued development of this thing</p>
+                    <a class="a2" href="https://www.paypal.me/w3bb0">Pay Pal!</a>
+                    <br>
+                    <a class="a2" href="https://steamcommunity.com/tradeoffer/new/?partner=42975919&token=Gg_ChxfV">Items!</a>
+                    <br>
+                    <a class="a2" href="https://steamcommunity.com/id/Laleem/">Person who made this thing pretty!</a>
+                </div>
+            </div>
+        </nav>
 
-<div class="github">
-  <img src="https://i.imgur.com/evVmKjY.png" alt="" style="width:40%">
-  <div class="container">
-    <p>Share, develop, add and more on our github page.</p>
-    <a class="a2" href="https://github.com/w3bb01/tf2-price-api-gui">Download here!</a>
-  </div>
-</div>
-</nav>
-
-<nav>
-<div class="discord">
-    <img src="https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg" alt="" style="width:20%">
-    <div class="container">
-    <p>Join our Discord to talk with fellow bot-owners, talk about potential issues and more!</p>
-    <a class="a2" href="https://discordapp.com/invite/5VYFY7V">Join here!</a>
-    </div>
-    </div>
-</nav>
-
-<p class="copyright-notice">
-Copyright © tf2-automatic 
-</p>
-
+        <div class="github">
+            <img src="https://i.imgur.com/evVmKjY.png" alt="" style="width:40%">
+            <div class="container">
+                <p>Share, develop, add and more on our github page.</p>
+                <a class="a2" href="https://github.com/w3bb01/tf2-price-api-gui">Download here!</a>
+            </div>
+        </div>
+    </nav>
 
 </body>
+
 </html>

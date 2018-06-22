@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const URL = require('url');
 const async = require('async');
+const fs = require('graceful-fs');
 
 const TF2Items = require('tf2-items');
 const TF2Automatic = require('tf2automatic');
@@ -18,6 +19,17 @@ const Automatic = new TF2Automatic({
 const Items = new TF2Items({
     apiKey: config.steamKey
 });
+
+if (fs.existsSync('listings.json')) {
+    try {
+        const pricelist = JSON.parse(fs.readFileSync('listings.json'));
+        if (pricelist != null) {
+            Automatic.listings = pricelist;
+        }
+    } catch (err) {
+        console.log(err.message);
+    }
+}
 
 async.series([
     function (callback) {
@@ -246,4 +258,22 @@ app.post('/additem', (req, res) => {
             result: 'item added, add another item below'
         });
     });
+});
+
+Automatic.on('change', function(state, item) {
+    switch (state) {
+        case 1:
+            console.log('"' + item.name + '" has been added to the pricelist');
+            break;
+        case 2:
+            console.log('"' + item.name + '" has changed');
+            break;
+        case 3:
+            console.log('"' + item.name + '" is no longer in the pricelist');
+            break;
+    }
+});
+
+Automatic.on('listings', function(listings) {
+    fs.writeFile('listings.json', JSON.stringify(listings, null, 4), function() {});
 });
