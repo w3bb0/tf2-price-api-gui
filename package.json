@@ -1,24 +1,23 @@
 {
-  "name": "tf2-price-api-gui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "async": "^2.6.1",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "openurl": "^1.1.1",
-    "path": "^0.12.7",
-    "request": "^2.87.0",
-    "tf2-items": "^2.0.2",
-    "tf2automatic": "^1.0.5",
-    "url": "^0.11.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "tf2-price-api-gui",
+    "version": "1.0.0",
+    "engines": {
+        "node": ">=6.0.0"
+    },
+    "description": "",
+    "main": "app.js",
+    "dependencies": {
+        "async": "^2.6.1",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
+        "express-handlebars": "^3.0.0",
+        "openurl": "^1.1.1",
+        "path": "^0.12.7",
+        "request": "^2.87.0",
+        "tf2-items": "^2.0.2",
+        "tf2automatic": "^1.0.5",
+        "url": "^0.11.0"
+    },
+    "author": "",
+    "license": "ISC"
 }

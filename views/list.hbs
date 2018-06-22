@@ -9,69 +9,82 @@
 </head>
 
 <body>
-<nav class="navbar">
-     <span class="open-slide">
-         <a href="#" onclick="openSlideMenu()">
-            <svg width="30" height="30">
-                <path d="M0,5 30,5" stroke="#fff" 
-                stroke-width="5"/>
-                <path d="M0,14 30,14" stroke="#fff"
-                stroke-width="5"/>
-                <path d="M0,23 30,23" stroke="#fff"
-                stroke-width="5"/>
-            </svg>    
-         </a>
-     </span>
+    <nav class="navbar">
+        <span class="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+                <svg width="30" height="30">
+                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                </svg>
+            </a>
+        </span>
 
-</nav>
+    </nav>
 
-<div id="side-menu" class="side-nav">
-            <a href="#"class = "btn-close" onclick=closeSideMenu()>&times;</a>
-            <a href="/">Home</a>
-            <a href="/pricelist">Item List</a>
-            <a href="additem">Add items</a>
-         <input type="submit" form="removeItem" value="Delete selected"></input><br>
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick=closeSideMenu()>&times;</a>
+        <a href="/">Home</a>
+        <a href="/pricelist">Item List</a>
+        <a href="additem">Add items</a>
+        <input type="submit" form="removeItem" value="Delete selected"></input>
         <br>
-    	<input type="submit" form="removeAll" value="Delete all items"></input>
+        <br>
+        <input type="submit" form="removeAll" value="Delete all items"></input>
     </div>
 
-        </div>
-        <div class="main">
-            <h1>TF2 Automatic</h1>
-        </div>
+    </div>
+    <div class="main">
+        <h1>TF2 Automatic</h1>
+    </div>
 
-        <script>
-            function openSlideMenu() {
-                document.getElementById('side-menu').style.width = '250px';
-                document.getElementById('main').style.margin.left = '250px';
+    <script>
+        function openSlideMenu() {
+            document.getElementById('side-menu').style.width = '250px';
+            document.getElementById('main').style.margin.left = '250px';
 
-            }
-            function closeSideMenu() {
-                document.getElementById('side-menu').style.width = '0px';
-                document.getElementById('main').style.margin.left = '0px';
-            }
-        </script>
-
+        }
+        function closeSideMenu() {
+            document.getElementById('side-menu').style.width = '0px';
+            document.getElementById('main').style.margin.left = '0px';
+        }
+    </script>
 
     <h1>View and remove items from the price list</h1>
     <h2>{{{result}}}</h2>
     <br>
     <br>
     <br>
-<div class="item-desc">
-    <form method="post" id="removeItem">
-        {{#items}}
-        <br> {{{name}}}
-        <input type="checkbox" id="item" name="name" value={{{position}}}></input>
-        <br> {{{buy}}}
-        <br> {{{sell}}}
-        <br><img src={{{image}}} style="width:100px;height:100px;">
-        <hr>
-        {{/items}}
-    </form>
-    <form method="post" id="removeAll">
-    	<input type="hidden" name="delete" value="all"></input>
-    </form>
-</div>
+    <h2>Navigate pages</h2>
+    <p>
+        <a href='/pricelist?page={{nextPage}}'>Next</a>
+    </p>
+    <p>
+        <a href='/pricelist?page={{prevPage}}'>Previous</a>
+    </p>
+    <div class="item-desc">
+        <form method="post" id="removeItem">
+            {{#items}}
+            <br> {{{name}}}
+            <input type="checkbox" id="item" name="name" value={{{position}}}></input>
+            <br> {{{buy}}}
+            <br> {{{sell}}}
+            <br>
+            <img src={{{image}}} style="width:100px;height:100px;">
+            <hr> {{/items}}
+        </form>
+        <form method="post" id="removeAll">
+            <input type="hidden" name="delete" value="all"></input>
+        </form>
+    </div>
+    <br>
+    <h2>Navigate pages</h2>
+    <p>
+        <a href='/pricelist?page={{nextPage}}'>Next</a>
+    </p>
+    <p>
+        <a href='/pricelist?page={{prevPage}}'>Previous</a>
+    </p>
 </body>
+
 </html>

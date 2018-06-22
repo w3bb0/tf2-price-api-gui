@@ -31,13 +31,13 @@ async.series([
         throw err;
     }
 
-    app.listen(3000, function () { //listen on port 3000
-        console.log("Server is listening on port 3000");
-        require("openurl").open("http://localhost:3000/")
+    app.listen(3000, function () {
+        console.log('Server is listening on port 3000');
+        require('openurl').open('http://localhost:3000/');
     });
 });
 
-const app = express(); //set up handlebars and express
+const app = express();
 const hbs = handlebars.create();
 
 app.use(bodyParser.urlencoded({
@@ -57,7 +57,7 @@ function findMatch(search) { //function to get a defindex of a item
     for (let i = 0; i < schema.length; i++) {
         let name = schema[i].item_name;
         if (schema[i].proper_name == true) {
-            name = "The " + name;
+            name = 'The ' + name;
         }
         if (name.toLowerCase() == search) {
             return schema[i].defindex;
@@ -73,7 +73,7 @@ function findMatch(search) { //function to get a defindex of a item
     for (let i = 0; i < match.length; i++) {
         let name = schema[i].item_name;
         if (schema[i].proper_name == true) {
-            name = "The " + name;
+            name = 'The ' + name;
         }
         match[i] = name;
     }
@@ -96,11 +96,11 @@ function decimalPlaces(num) {
 function trunc(number, decimals = 2) {
     const factor = Math.pow(10, decimals);
     return Math.floor(number * factor) / factor;
-};
+}
 
 function plural(word, count) {
     return Math.abs(count) == 1 ? word : word + 's';
-};
+}
 
 function currencyAsText(currencies) {
     var text = '';
@@ -117,30 +117,31 @@ function currencyAsText(currencies) {
         return '0 keys, 0 ref';
     }
     return text;
-};
+}
 
 function getList() {
-    let list = Automatic.listings
-    let items = []
+    let list = Automatic.listings;
+    let items = [];
     for (let i = 0; i < list.length; i++) {
-        let buy = null;
+        let buy = 'none';
         if (list[i].prices && list[i].prices.buy) {
-            buy = currencyAsText(list[i].prices.buy)
+            buy = currencyAsText(list[i].prices.buy);
         }
-        let sell = null;
+        let sell = 'none';
         if (list[i].prices && list[i].prices.sell) {
-            sell = currencyAsText(list[i].prices.sell)
+            sell = currencyAsText(list[i].prices.sell);
         }
+
         items.push({
-            "name": list[i].name,
-            "buy": 'Buying for ' + buy,
-            "sell": 'Selling for ' + sell,
-            "image": list[i].icon,
-            "position": [i]
-        })
+            'name': list[i].name,
+            'buy': 'Buying for ' + buy,
+            'sell': 'Selling for ' + sell,
+            'image': list[i].icon,
+            'position': [i]
+        });
     }
     return items;
-};
+}
 
 function getItems() {
     let names = [];
@@ -161,14 +162,20 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/pricelist', (req, res) => {
+    let page = parseInt(req.query.page);
+    if (isNaN(page)) {
+        page = 1;
+    }
     res.render('list', {
-        items: getList()
+        items: getList().slice(page - 1, page * 100),
+        nextPage: page + 1,
+        prevPage: page - 1
     });
 });
 
 app.get('/addItem', (req, res) => {
     res.render('addItem', {
-        result: "add a item below"
+        result: 'add an item below'
     });
 });
 
@@ -178,10 +185,10 @@ app.post('/pricelist', (req, res) => {
             if (!err) {
                 res.render('list', {
                     items: getList(),
-                    result: "all items have been removed, you monster"
+                    result: 'all items have been removed'
                 });
             } else {
-                res.json("something broke sry " + err)
+                res.json('something broke sry ' + err.messages ? err.messages.join(', ').toLowerCase() : err.message);
             }
         });
     }
@@ -192,19 +199,19 @@ app.post('/pricelist', (req, res) => {
             res.json('You need to select items');
             return;
         }
-        let list = getItems()
-        let names = []
+        let list = getItems();
+        let names = [];
         for (var i = 0; i < items.length; i++) {
-            names.push(list[items[i]])
+            names.push(list[items[i]]);
         }
         Automatic.removeListings(names, function (err) {
             if (!err) {
                 res.render('list', {
                     items: getList(),
-                    result: "some items have been removed"
+                    result: 'some items have been removed'
                 });
             } else {
-                res.json("something broke sry " + err)
+                res.json('something broke sry ' + err.messages ? err.messages.join(', ').toLowerCase() : err.message);
             }
         });
     }
@@ -214,11 +221,11 @@ app.post('/additem', (req, res) => {
     let url = URL.parse(req.body.url, true); //get the URL and parse it
     if (url.pathname != '/classifieds' || url.host != 'backpack.tf') {
         res.render('addItem', {
-            result: "oh no your link does not look correct"
+            result: 'oh no your link does not look correct'
         });
-        return
+        return;
     }
-    let querys = url.query //assign the query's from the passed URL to a variable
+    let querys = url.query; //assign the query's from the passed URL to a variable
     Automatic.addListing({
         defindex: findMatch(querys.item),
         quality: parseInt(querys.quality),
@@ -228,15 +235,15 @@ app.post('/additem', (req, res) => {
         effect: null,
         autoprice: true,
         enabled: true
-    }, function (err, listing) {
+    }, function (err) {
         if (err) {
             res.render('addItem', {
-                result: "well something broke go send this error to w3bb0: " + err.messages ? err.messages.join(', ').toLowerCase() : err.message
+                result: 'well something broke go send this error to w3bb0: ' + err.messages ? err.messages.join(', ').toLowerCase() : err.message
             });
             return;
         }
         res.render('addItem', {
-            result: "item added, add a item below"
+            result: 'item added, add another item below'
         });
-    })
+    });
 });
