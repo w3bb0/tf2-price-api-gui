@@ -228,6 +228,7 @@ app.post('/additem', (req, res) => {
             res.render('addItem', {
                 result: "well something broke go send this error to w3bb0: " + err
             });
+            return;
         }
         res.render('addItem', {
             result: "item added, add a item below"
