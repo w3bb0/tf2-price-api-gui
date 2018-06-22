@@ -118,8 +118,14 @@ function getList() {
     let list = automatic.listings
     let items = []
     for (let i = 0; i < list.length; i++) {
-        let buy = currencyAsText(list[i].prices.buy)
-        let sell = currencyAsText(list[i].prices.sell)
+        let buy = null;
+        if (list[i].prices && list[i].prices.buy) {
+            buy = currencyAsText(list[i].prices.buy)
+        }
+        let sell = null;
+        if (list[i].prices && list[i].prices.sell) {
+            sell = currencyAsText(list[i].prices.sell)
+        }
         items.push({
             "name": list[i].name,
             "buy": 'Buying for ' + buy,
@@ -230,6 +236,6 @@ app.post('/additem', (req, res) => {
 });
 
 app.listen(3000, function () { //listen on port 3000
-    console.log("listening on port 3000");
+    console.log("Server is listening on port 3000");
     require("openurl").open("http://localhost:3000/")
 });
