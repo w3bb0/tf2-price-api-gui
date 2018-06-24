@@ -20,10 +20,10 @@ const Items = new TF2Items({
 });
 
 async.series([
-    function (callback) {
+    function(callback) {
         Automatic.init(callback);
     },
-    function (callback) {
+    function(callback) {
         Items.init(callback);
     }
 ], function(err) {
@@ -31,7 +31,7 @@ async.series([
         throw err;
     }
 
-    app.listen(3000, function () {
+    app.listen(3000, function() {
         console.log('Server is listening on port 3000');
         require('openurl').open('http://localhost:3000/');
     });
@@ -131,13 +131,12 @@ function getList() {
         if (list[i].prices && list[i].prices.sell) {
             sell = currencyAsText(list[i].prices.sell);
         }
-
         items.push({
             'name': list[i].name,
             'buy': 'Buying for ' + buy,
             'sell': 'Selling for ' + sell,
             'image': list[i].icon,
-            'position': [i]
+            'encoded': encodeURI(list[i].name)
         });
     }
     return items;
@@ -181,7 +180,7 @@ app.get('/addItem', (req, res) => {
 
 app.post('/pricelist', (req, res) => {
     if (req.body.delete) {
-        Automatic.removeListings(getItems(), function (err) {
+        Automatic.removeListings(getItems(), function(err) {
             if (!err) {
                 res.render('list', {
                     items: getList(),
@@ -199,12 +198,15 @@ app.post('/pricelist', (req, res) => {
             res.json('You need to select items');
             return;
         }
-        let list = getItems();
-        let names = [];
-        for (var i = 0; i < items.length; i++) {
-            names.push(list[items[i]]);
+        let names = []
+        if (typeof req.body.name != 'string') {
+            for (var i = 0; i < req.body.name.length; i++) {
+                names.push(decodeURI(req.body.name[i]));
+            }
+        } else {
+            names.push(decodeURI(req.body.name));
         }
-        Automatic.removeListings(names, function (err) {
+        Automatic.removeListings(names, function(err) {
             if (!err) {
                 res.render('list', {
                     items: getList(),
@@ -235,7 +237,7 @@ app.post('/additem', (req, res) => {
         effect: null,
         autoprice: true,
         enabled: true
-    }, function (err) {
+    }, function(err) {
         if (err) {
             res.render('addItem', {
                 result: 'well something broke go send this error to w3bb0: ' + err.messages ? err.messages.join(', ').toLowerCase() : err.message

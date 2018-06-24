@@ -48,6 +48,9 @@
             document.getElementById('side-menu').style.width = '0px';
             document.getElementById('main').style.margin.left = '0px';
         }
+        function test(string) {
+            return string
+        }
     </script>
 
     <h1>View and remove items from the price list</h1>
@@ -66,7 +69,7 @@
         <form method="post" id="removeItem">
             {{#items}}
             <br> {{{name}}}
-            <input type="checkbox" id="item" name="name" value={{{position}}}></input>
+            <input type="checkbox" id="item" name="name" value={{{encoded}}}></input>
             <br> {{{buy}}}
             <br> {{{sell}}}
             <br>
