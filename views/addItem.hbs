@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>Add items</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
+
 <body class="body2">
 
 
-<nav class="navbar">
-     <span class="open-slide">
-         <a href="#" onclick="openSlideMenu()">
-            <svg width="30" height="30">
-                <path d="M0,5 30,5" stroke="#fff" 
-                stroke-width="5"/>
-                <path d="M0,14 30,14" stroke="#fff"
-                stroke-width="5"/>
-                <path d="M0,23 30,23" stroke="#fff"
-                stroke-width="5"/>
-            </svg>    
-         </a>
-     </span>
+    <nav class="navbar">
+        <span class="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+                <svg width="30" height="30">
+                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                </svg>
+            </a>
+        </span>
 
-</nav>
+    </nav>
 
-<div id="side-menu" class="side-nav">
-            <a href="#"class = "btn-close" onclick=closeSideMenu()>&times;</a>
-            <a href="/">Home</a>
-            <a href="/pricelist">Item List</a>
-            <a href="additem">Add item</a>
-        </div>
-        <div class="main">
-            <h1>TF2 Automatic</h1>
-        </div>
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick=closeSideMenu()>&times;</a>
+        <a href="/">Home</a>
+        <a href="/pricelist">Item List</a>
+        <a href="additem">Add item</a>
+    </div>
+    <div class="main">
+        <h1>TF2 Automatic</h1>
+    </div>
 
-        <script>
-            function openSlideMenu() {
-                document.getElementById('side-menu').style.width = '250px';
-                document.getElementById('main').style.margin.left = '250px';
-            }
-            function closeSideMenu() {
-                document.getElementById('side-menu').style.width = '0px';
-                document.getElementById('main').style.margin.left = '0px';
-            }
-        
-        </script>
+    <script>
+        function openSlideMenu() {
+            document.getElementById('side-menu').style.width = '250px';
+            document.getElementById('main').style.margin.left = '250px';
+        }
+        function closeSideMenu() {
+            document.getElementById('side-menu').style.width = '0px';
+            document.getElementById('main').style.margin.left = '0px';
+        }
 
-<nav>
-    <div class="additems">
+    </script>
 
-<br>
-<p class="bptext">{{{result}}}</p><br>
-<form method="POST" id="addItem">
-    <p class="bptext">Paste backpack.tf url of item and press enter:</p><br>
-    <input type="text" name="url" placeholder="" required autofocus>
-</form>
+    <nav>
+        <div class="additems">
 
-</nav>
-</div>
+            <br>
+            <p class="bptext">{{{result}}}</p>
+            <br>
+            <form method="POST" id="addItem">
+                <p class="bptext">Paste backpack.tf url of item and press enter:</p>
+                <br>
+                <input type="text" name="url" placeholder="" required autofocus>
+            </form>
+
+    </nav>
+    </div>
 
 </body>
+
 </html>
